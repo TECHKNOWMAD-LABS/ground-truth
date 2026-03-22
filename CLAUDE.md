@@ -1,0 +1,2 @@
+- Production quality. Run tests. Fix failures.
+- Python 3.12 Node 22. Type hints. Env vars for secrets.
