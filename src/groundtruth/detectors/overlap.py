@@ -2,13 +2,26 @@ from __future__ import annotations
 
 import re
 from collections import Counter
+from functools import lru_cache
 from typing import Any
 
 from ..base import BaseDetector
 from ..models import DetectionResult
 
 
+@lru_cache(maxsize=1024)
 def _tokenize(text: str) -> list[str]:
+    """Tokenize text into lowercase word tokens with LRU cache.
+
+    Caching avoids repeated regex evaluation on identical strings, which is
+    common in batch detection where the same context appears multiple times.
+
+    Args:
+        text: Input text to tokenize.
+
+    Returns:
+        List of lowercase word tokens.
+    """
     return re.findall(r"\b\w+\b", text.lower())
 
 
