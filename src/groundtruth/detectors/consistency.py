@@ -8,7 +8,16 @@ from ..models import DetectionResult
 
 
 def _jaccard(text_a: str, text_b: str) -> float:
-    """Token-level Jaccard similarity between two texts."""
+    """Token-level Jaccard similarity between two texts.
+
+    Args:
+        text_a: First text.
+        text_b: Second text.
+
+    Returns:
+        Jaccard similarity in [0, 1]. Returns 1.0 when both texts are empty
+        (vacuously identical) and 0.0 when exactly one is empty.
+    """
     tokens_a = set(re.findall(r"\b\w+\b", text_a.lower()))
     tokens_b = set(re.findall(r"\b\w+\b", text_b.lower()))
     if not tokens_a and not tokens_b:
@@ -49,6 +58,21 @@ class ConsistencyDetector(BaseDetector):
             claim: The generated text to evaluate.
             context: Source context (used as fallback when no candidates given).
             candidates: Optional list of sampled model responses to compare against.
+        """
+        self._validate_inputs(claim, context)
+        """Detect hallucination via self-consistency against candidate responses.
+
+        Args:
+            claim: The generated text to evaluate.
+            context: Source context (used as fallback when no candidates given).
+            candidates: Optional list of sampled model responses to compare against.
+            **kwargs: Unused; accepted for interface compatibility.
+
+        Returns:
+            DetectionResult with score derived from 1 - avg_jaccard_similarity.
+
+        Raises:
+            TypeError: If claim or context are not strings.
         """
         self._validate_inputs(claim, context)
         references = candidates if candidates else [context]

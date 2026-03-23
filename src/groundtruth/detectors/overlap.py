@@ -26,7 +26,16 @@ def _tokenize(text: str) -> list[str]:
 
 
 def _ngram_recall(claim_tokens: list[str], context_tokens: list[str], n: int) -> float:
-    """Fraction of claim n-grams that appear in context (recall-oriented)."""
+    """Fraction of claim n-grams that appear in context (recall-oriented).
+
+    Args:
+        claim_tokens: Tokenized claim.
+        context_tokens: Tokenized context.
+        n: N-gram size.
+
+    Returns:
+        Recall in [0, 1]. Returns 0.0 if claim has no n-grams of size n.
+    """
     claim_ng = Counter(tuple(claim_tokens[i : i + n]) for i in range(len(claim_tokens) - n + 1))
     context_ng = Counter(
         tuple(context_tokens[i : i + n]) for i in range(len(context_tokens) - n + 1)
@@ -55,6 +64,19 @@ class OverlapDetector(BaseDetector):
         self.threshold = threshold
 
     def detect(self, claim: str, context: str, **kwargs: Any) -> DetectionResult:
+        """Detect hallucination by computing n-gram recall of claim against context.
+
+        Args:
+            claim: The generated text to evaluate.
+            context: Ground-truth reference or source context.
+            **kwargs: Unused; accepted for interface compatibility.
+
+        Returns:
+            DetectionResult with hallucination score derived from 1 - avg_recall.
+
+        Raises:
+            TypeError: If claim or context are not strings.
+        """
         self._validate_inputs(claim, context)
         claim_tokens = _tokenize(claim)
         context_tokens = _tokenize(context)
