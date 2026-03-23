@@ -6,9 +6,20 @@ build-backend = "hatchling.build"
 name = "groundtruth"
 version = "0.1.0"
 description = "Hallucination detector for LLM outputs using overlap, entailment, and consistency methods"
+authors = [{ name = "TechKnowMad Labs", email = "admin@techknowmad.ai" }]
 license = { text = "MIT" }
 requires-python = ">=3.12"
 dependencies = []
+keywords = ["hallucination", "llm", "nlp", "grounding", "fact-checking"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 
 [project.optional-dependencies]
 transformers = [
@@ -17,7 +28,10 @@ transformers = [
 ]
 dev = [
     "pytest>=8.0",
+    "pytest-cov>=7.0",
+    "hypothesis>=6.100",
     "ruff>=0.4",
+    "mypy>=1.10",
 ]
 
 [tool.hatch.build.targets.wheel]
