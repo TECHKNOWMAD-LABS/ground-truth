@@ -50,6 +50,7 @@ class ConsistencyDetector(BaseDetector):
             context: Source context (used as fallback when no candidates given).
             candidates: Optional list of sampled model responses to compare against.
         """
+        self._validate_inputs(claim, context)
         references = candidates if candidates else [context]
 
         similarities = [_jaccard(claim, ref) for ref in references]

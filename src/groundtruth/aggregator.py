@@ -108,6 +108,10 @@ class GroundTruthDetector:
                 f"claims and contexts must have the same length: "
                 f"{len(claims)} vs {len(contexts)}"
             )
+        if not all(isinstance(c, str) for c in claims):
+            raise TypeError("All claims must be strings")
+        if not all(isinstance(c, str) for c in contexts):
+            raise TypeError("All contexts must be strings")
         return [self.detect(claim, ctx, **kwargs) for claim, ctx in zip(claims, contexts)]
 
     def add_detector(self, detector: BaseDetector, weight: float = 1.0) -> None:

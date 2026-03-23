@@ -57,6 +57,7 @@ class EntailmentDetector(BaseDetector):
         self.nli_provider = nli_provider
 
     def detect(self, claim: str, context: str, **kwargs: Any) -> DetectionResult:
+        self._validate_inputs(claim, context)
         if self.nli_provider is not None:
             entailment = float(self.nli_provider.entailment_score(context, claim))
         else:

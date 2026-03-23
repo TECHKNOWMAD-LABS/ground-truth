@@ -42,6 +42,7 @@ class OverlapDetector(BaseDetector):
         self.threshold = threshold
 
     def detect(self, claim: str, context: str, **kwargs: Any) -> DetectionResult:
+        self._validate_inputs(claim, context)
         claim_tokens = _tokenize(claim)
         context_tokens = _tokenize(context)
 
