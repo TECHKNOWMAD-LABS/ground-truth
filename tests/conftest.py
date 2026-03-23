@@ -4,15 +4,11 @@ from __future__ import annotations
 import pytest
 
 from groundtruth import (
-    AggregatedResult,
     ConsistencyDetector,
-    DetectionResult,
     EntailmentDetector,
     GroundTruthDetector,
-    NLIProvider,
     OverlapDetector,
 )
-
 
 # ---------------------------------------------------------------------------
 # NLI stub helpers

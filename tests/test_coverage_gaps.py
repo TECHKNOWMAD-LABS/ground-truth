@@ -5,9 +5,6 @@ from __future__ import annotations
 import pytest
 
 from groundtruth import (
-    AggregatedResult,
-    ConsistencyDetector,
-    DetectionResult,
     EntailmentDetector,
     GroundTruthDetector,
     OverlapDetector,
@@ -15,7 +12,6 @@ from groundtruth import (
 from groundtruth.detectors.consistency import _jaccard  # noqa: PLC2701
 from groundtruth.detectors.overlap import _ngram_recall, _tokenize  # noqa: PLC2701
 from tests.conftest import ClampingNLI, FixedNLI
-
 
 # ---------------------------------------------------------------------------
 # aggregator.py line 53 — zero weights sum

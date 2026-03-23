@@ -19,7 +19,6 @@ from groundtruth import (
     OverlapDetector,
 )
 
-
 # ---------------------------------------------------------------------------
 # Injection safety — text inputs treated as data, not code
 # ---------------------------------------------------------------------------

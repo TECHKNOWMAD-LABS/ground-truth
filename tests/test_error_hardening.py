@@ -1,8 +1,6 @@
 """Error-hardening tests: None inputs, empty strings, huge strings, unicode, malformed data."""
 from __future__ import annotations
 
-import string
-
 import pytest
 
 from groundtruth import (
@@ -13,7 +11,6 @@ from groundtruth import (
     GroundTruthDetector,
     OverlapDetector,
 )
-
 
 # ---------------------------------------------------------------------------
 # None / type safety

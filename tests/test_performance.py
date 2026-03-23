@@ -9,7 +9,6 @@ from groundtruth import GroundTruthDetector, OverlapDetector
 from groundtruth.aggregator import cached_tokenize
 from groundtruth.detectors.overlap import _tokenize
 
-
 # ---------------------------------------------------------------------------
 # Parallel batch detection
 # ---------------------------------------------------------------------------

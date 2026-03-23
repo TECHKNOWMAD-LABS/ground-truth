@@ -5,7 +5,6 @@ import pytest
 
 from groundtruth import AggregatedResult, DetectionResult
 
-
 # ---------------------------------------------------------------------------
 # DetectionResult validation
 # ---------------------------------------------------------------------------
