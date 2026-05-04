@@ -1,4 +1,5 @@
 """Tests for GroundTruthDetector aggregator."""
+
 import pytest
 
 from groundtruth import (

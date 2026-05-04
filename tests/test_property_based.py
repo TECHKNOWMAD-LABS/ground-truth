@@ -8,6 +8,7 @@ Invariants verified:
 5. Weighted score respects threshold boundary
 6. Batch results always same length as inputs
 """
+
 from __future__ import annotations
 
 from dataclasses import asdict
@@ -24,7 +25,7 @@ from groundtruth import (
     OverlapDetector,
 )
 from groundtruth.detectors.consistency import _jaccard
-from groundtruth.detectors.overlap import _ngram_recall, _tokenize
+from groundtruth.detectors.overlap import _ngram_recall
 
 # ---------------------------------------------------------------------------
 # Shared strategies
@@ -44,9 +45,7 @@ short_text_strategy = st.text(
 
 positive_float = st.floats(min_value=0.01, max_value=1.0, allow_nan=False, allow_infinity=False)
 
-threshold_strategy = st.floats(
-    min_value=0.0, max_value=1.0, allow_nan=False, allow_infinity=False
-)
+threshold_strategy = st.floats(min_value=0.0, max_value=1.0, allow_nan=False, allow_infinity=False)
 
 
 # ---------------------------------------------------------------------------
@@ -234,9 +233,7 @@ def test_jaccard_in_unit_interval(a: str, b: str) -> None:
     n=st.integers(min_value=1, max_value=4),
 )
 @settings(max_examples=200)
-def test_ngram_recall_in_unit_interval(
-    claim: list[str], context: list[str], n: int
-) -> None:
+def test_ngram_recall_in_unit_interval(claim: list[str], context: list[str], n: int) -> None:
     """_ngram_recall always returns a value in [0, 1]."""
     result = _ngram_recall(claim, context, n)
     assert 0.0 <= result <= 1.0

@@ -1,4 +1,5 @@
 """Tests for OverlapDetector."""
+
 import pytest
 
 from groundtruth import DetectionResult, OverlapDetector

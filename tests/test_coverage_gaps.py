@@ -1,5 +1,6 @@
 """Tests targeting specific coverage gaps: aggregator zero-weights, overlap single-token,
 consistency jaccard edge cases."""
+
 from __future__ import annotations
 
 import pytest

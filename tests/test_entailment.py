@@ -1,4 +1,5 @@
 """Tests for EntailmentDetector."""
+
 import pytest
 
 from groundtruth import EntailmentDetector, NLIProvider
