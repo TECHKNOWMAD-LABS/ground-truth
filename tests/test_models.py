@@ -1,4 +1,5 @@
 """Tests for DetectionResult and AggregatedResult models — covers validation branches."""
+
 from __future__ import annotations
 
 import pytest

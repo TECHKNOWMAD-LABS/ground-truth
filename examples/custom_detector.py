@@ -7,18 +7,15 @@ Demonstrates:
 - Using add_detector() to extend an existing aggregator at runtime
 - ConsistencyDetector with multiple sampled model responses
 """
+
 from __future__ import annotations
 
 from groundtruth import (
-    AggregatedResult,
     ConsistencyDetector,
-    DetectionResult,
     EntailmentDetector,
     GroundTruthDetector,
-    NLIProvider,
     OverlapDetector,
 )
-
 
 # ---------------------------------------------------------------------------
 # Custom NLI provider (stub — replace with real HuggingFace model in production)

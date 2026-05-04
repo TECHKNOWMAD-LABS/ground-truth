@@ -1,4 +1,5 @@
 """Shared fixtures and mock helpers for the ground-truth test suite."""
+
 from __future__ import annotations
 
 import pytest

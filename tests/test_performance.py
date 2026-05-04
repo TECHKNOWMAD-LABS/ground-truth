@@ -1,4 +1,5 @@
 """Performance tests: parallel batch detection, caching, timing measurements."""
+
 from __future__ import annotations
 
 import time

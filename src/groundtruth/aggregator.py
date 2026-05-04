@@ -136,8 +136,7 @@ class GroundTruthDetector:
         """
         if len(claims) != len(contexts):
             raise ValueError(
-                f"claims and contexts must have the same length: "
-                f"{len(claims)} vs {len(contexts)}"
+                f"claims and contexts must have the same length: {len(claims)} vs {len(contexts)}"
             )
         if not all(isinstance(c, str) for c in claims):
             raise TypeError("All claims must be strings")

@@ -1,4 +1,5 @@
 """Tests for ConsistencyDetector."""
+
 import pytest
 
 from groundtruth import ConsistencyDetector, DetectionResult

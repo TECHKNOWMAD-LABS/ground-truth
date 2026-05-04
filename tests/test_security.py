@@ -7,6 +7,7 @@ Scan results summary:
 - File open(): 0 found — no path traversal vectors
 - All configuration is pure-Python dataclasses with no persistence
 """
+
 from __future__ import annotations
 
 import pytest

@@ -5,11 +5,12 @@ Demonstrates:
 - Parallel execution via ThreadPoolExecutor
 - Summarising results across a batch
 """
+
 from __future__ import annotations
 
 import time
 
-from groundtruth import GroundTruthDetector, OverlapDetector
+from groundtruth import GroundTruthDetector
 
 # Use lightweight detector for this demo (no external models needed)
 detector = GroundTruthDetector(threshold=0.5)
@@ -46,7 +47,7 @@ start = time.perf_counter()
 results = detector.detect_batch(claims, contexts)
 elapsed = time.perf_counter() - start
 
-print(f"Batch of {len(claims)} pairs processed in {elapsed*1000:.1f}ms\n")
+print(f"Batch of {len(claims)} pairs processed in {elapsed * 1000:.1f}ms\n")
 print(f"{'#':<3} {'Hallucinated?':<15} {'Score':<8} {'Claim (truncated)'}")
 print("-" * 70)
 
@@ -59,4 +60,4 @@ for i, (claim, result) in enumerate(zip(claims, results), 1):
 
 print("-" * 70)
 print(f"\nTotal hallucinations detected: {hallucination_count}/{len(claims)}")
-print(f"Average score: {sum(r.score for r in results)/len(results):.3f}")
+print(f"Average score: {sum(r.score for r in results) / len(results):.3f}")
